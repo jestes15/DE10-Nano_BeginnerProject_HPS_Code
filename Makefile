@@ -8,14 +8,19 @@ CXX_FLAGS = -g -Wall -D$(ALT_DEVICE_FAMILY) -I$(HWLIBS_ROOT)/include/$(ALT_DEVIC
 LD_FLAGS = -g -Wall
 
 CXX = ${CROSS_COMPILE}g++
+C = ${CROSS_COMPILE}g++
 
 build: clean $(TARGET)
 
 $(TARGET): main.o
 	$(CXX) $(LD_FLAGS) $^ -o $@
+	rm *.o
 
 %.o : $(SRC_DIR)/%.cpp
 	$(CXX) $(CXX_FLAGS) -c $< -o $@
+
+%.o : $(SRC_DIR)/%.c
+	$(C) $(CXX_FLAGS) -c $< -o $@
 
 clean:
 	rm -f $(TARGET) *.a *.o *~

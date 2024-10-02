@@ -17,7 +17,7 @@ int main(int argc, char **argv)
     // Argument checks
     if (argc != 3)
     {
-        printf("More/less arguments than expected. (Max 2 arguments)");
+        printf("More/less arguments than expected. (Max 2 arguments)\n");
         return -1;
     }
 
@@ -41,9 +41,12 @@ int main(int argc, char **argv)
         return -3;
     }
 
-    operand_a_map = bridge_map + PIO_N_OUT_0_BASE;
-    operand_b_map = bridge_map + PIO_N_OUT_1_BASE;
-    sum_map = bridge_map + PIO_N_IN_0_BASE;
+    operand_a_map = bridge_map;
+    operand_b_map = bridge_map + 0x08;
+    sum_map = bridge_map + 0x10;
+
+    printf("A_Base: %x\n", HPS_TO_FPGA_HW_ADDER_BASE);
+    printf("A: %x, B: %x, Sum: %x\n", operand_a_map, operand_b_map, sum_map);
 
     *((uint64_t *)operand_a_map) = operand_a;
     *((uint64_t *)operand_b_map) = operand_b;
