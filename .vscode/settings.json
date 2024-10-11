@@ -24,6 +24,8 @@
 		"*.rex": "rexx",
 		"*.rexx": "rexx",
 		"error.h": "c",
-		"cerrno": "cpp"
+		"cerrno": "cpp",
+		"type_traits": "cpp",
+		"cinttypes": "cpp"
 	}
 }

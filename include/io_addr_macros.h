@@ -1,0 +1,6 @@
+#ifndef D164B24A_AACA_4C2D_8AA4_7412711F3472
+#define D164B24A_AACA_4C2D_8AA4_7412711F3472
+
+#define IO_ADDR(base, offset) ((base) + (offset))
+
+#endif /* D164B24A_AACA_4C2D_8AA4_7412711F3472 */

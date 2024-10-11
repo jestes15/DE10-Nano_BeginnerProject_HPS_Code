@@ -1,26 +1,30 @@
 INC_DIR = include
 SRC_DIR = src
+OBJ_DIR = obj
 TARGET = soc_sys
 
 ALT_DEVICE_FAMILY ?= soc_cv_av
+COMPILER_PATH ?= /home/bl4z3/intelFPGA/20.1/embedded/host_tools/linaro/gcc/bin/
+SOCEDS_DEST_ROOT ?= /home/bl4z3/intelFPGA/20.1/embedded
+
+CROSS_COMPILE = arm-linux-gnueabihf-
 HWLIBS_ROOT = $(SOCEDS_DEST_ROOT)/ip/altera/hps/altera_hps/hwlib
 CXX_FLAGS = -g -Wall -D$(ALT_DEVICE_FAMILY) -I$(HWLIBS_ROOT)/include/$(ALT_DEVICE_FAMILY) -I$(HWLIBS_ROOT)/include -Iinclude
 LD_FLAGS = -g -Wall
 
-CXX = ${CROSS_COMPILE}g++
-C = ${CROSS_COMPILE}g++
+CXX = $(COMPILER_PATH)$(CROSS_COMPILE)g++
+C = $(COMPILER_PATH)$(CROSS_COMPILE)g++
 
-build: clean $(TARGET)
+SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp)
+OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES))
 
-$(TARGET): main.o
+build: $(TARGET)
+
+$(TARGET): $(OBJ_FILES)
 	$(CXX) $(LD_FLAGS) $^ -o $@
-	rm *.o
 
-%.o : $(SRC_DIR)/%.cpp
-	$(CXX) $(CXX_FLAGS) -c $< -o $@
-
-%.o : $(SRC_DIR)/%.c
-	$(C) $(CXX_FLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CXX) $(CXX_FLAGS) -c -o $@ $<
 
 clean:
-	rm -f $(TARGET) *.a *.o *~
+	rm -f $(TARGET) $(OBJ_DIR)/*.o
