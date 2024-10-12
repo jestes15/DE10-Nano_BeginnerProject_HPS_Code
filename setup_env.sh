@@ -1,19 +1,16 @@
-mkdir -p ~/Downloads
-cd ~/Downloads
+echo "All downloads are going to $PWD"
 
-echo "All downloads are going to ~/Downloads"
-
-if [! -f "SoCEDSSetup-20.1.0.711-linux.run"]; then
+if ! test -f SoCEDSSetup-20.1.0.711-linux.run; then
 	echo "Downloading SoC EDS 20.1"
 	wget https://downloads.intel.com/akdlm/software/acdsinst/20.1std/711/ib_installers/SoCEDSSetup-20.1.0.711-linux.run
 fi
 
-if [! -f "QuartusLiteSetup-20.1.0.711-linux.run"]; then
+if ! test -f QuartusLiteSetup-20.1.0.711-linux.run; then
 	echo "Downloading Quartus Prime 20.1"
 	wget https://downloads.intel.com/akdlm/software/acdsinst/20.1std/711/ib_installers/QuartusLiteSetup-20.1.0.711-linux.run
 fi
 
-if [! -f "gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf.tar.xz"]; then
+if ! test -f gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf.tar.xz; then
 	echo "Downloading Arm GNU Toolchain 10.3-2021.07"
 	wget "https://developer.arm.com/-/media/Files/downloads/gnu-a/10.3-2021.07/binrel/gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf.tar.xz"
 fi
