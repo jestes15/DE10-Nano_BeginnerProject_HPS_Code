@@ -13,7 +13,6 @@ CXX_FLAGS = -g -Wall -D$(ALT_DEVICE_FAMILY) -I$(HWLIBS_ROOT)/include/$(ALT_DEVIC
 LD_FLAGS = -g -Wall
 
 CXX = $(COMPILER_PATH)$(CROSS_COMPILE)g++
-C = $(COMPILER_PATH)$(CROSS_COMPILE)g++
 
 SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp)
 OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES))
