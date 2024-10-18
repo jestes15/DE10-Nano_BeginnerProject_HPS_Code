@@ -9,7 +9,7 @@ SOCEDS_DEST_ROOT ?= ${HOME}/intelFPGA/20.1/embedded
 
 CROSS_COMPILE = arm-none-linux-gnueabihf-
 HWLIBS_ROOT = $(SOCEDS_DEST_ROOT)/ip/altera/hps/altera_hps/hwlib
-CXX_FLAGS = -g -Wall -D$(ALT_DEVICE_FAMILY) -I$(HWLIBS_ROOT)/include/$(ALT_DEVICE_FAMILY) -I$(HWLIBS_ROOT)/include -Iinclude
+CXX_FLAGS = -std=c++11 -g -Wall -D$(ALT_DEVICE_FAMILY) -I$(HWLIBS_ROOT)/include/$(ALT_DEVICE_FAMILY) -I$(HWLIBS_ROOT)/include -Iinclude
 LD_FLAGS = -g -Wall
 
 CXX = $(COMPILER_PATH)$(CROSS_COMPILE)g++

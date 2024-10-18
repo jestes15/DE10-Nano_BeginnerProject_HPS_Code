@@ -26,6 +26,20 @@
 		"error.h": "c",
 		"cerrno": "cpp",
 		"type_traits": "cpp",
-		"cinttypes": "cpp"
+		"cinttypes": "cpp",
+		"memory": "cpp",
+		"atomic": "cpp",
+		"initializer_list": "cpp",
+		"optional": "cpp",
+		"istream": "cpp",
+		"ostream": "cpp",
+		"ratio": "cpp",
+		"system_error": "cpp",
+		"array": "cpp",
+		"functional": "cpp",
+		"tuple": "cpp",
+		"utility": "cpp",
+		"variant": "cpp",
+		"stdexcept": "cpp"
 	}
 }
