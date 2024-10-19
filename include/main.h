@@ -21,7 +21,12 @@
 #include <unistd.h>
 
 // HPS-FPGA Specific Header Files
-#include "hps_0_arm_a9_0.h"
+#include <hwlib.h>
+#include <socal/socal.h>
+#include <socal/hps.h>
+#include <socal/alt_gpio.h>
+
+#include "hps_0.h"
 #include "soc_system.h"
 
 // Macro Header Files
@@ -33,11 +38,27 @@
 #define PERIPH 0xFC000000
 #define LWFPGASLAVES 0xFF200000
 
+class memory_manager
+{
+  private:
+    std::shared_ptr<uint8_t> fpga_slaves_base;
+    std::shared_ptr<uint8_t> periph_base;
+    std::shared_ptr<uint8_t> lw_fpga_slaves_base;
+    int file_descriptor;
+
+  public:
+    memory_manager();
+    ~memory_manager();
+
+    uint8_t *get_fpga_slaves_base();
+    uint8_t *get_periph_base();
+    uint8_t *get_lw_fpga_slaves_base();
+};
+
 class led_control
 {
   private:
-    uint8_t *led_register;
-    int file_descriptor;
+    std::shared_ptr<memory_manager> memory_manager_instance;
 
   public:
     led_control();

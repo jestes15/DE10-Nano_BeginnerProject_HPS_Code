@@ -5,19 +5,24 @@ union reint {
     uint8_t num_arr[8];
 };
 
+#define HPS_TO_FPGA_HW_ADDER_SPAN 0x18
+#define HPS_TO_FPGA_HW_ADDER_BASE 0xC0000000
+
 int main(int argc, char **argv)
 {
-	led_control led_controller;
+    led_control led_controller;
 
-	led_controller.clear_led_bits();
-	usleep(1000 * 500);
+    led_controller.clear_led_bits();
+    usleep(1000 * 500);
 
-	for (int i = 0; i < 8; i++)
-	{
-		led_controller.set_led_bits(1 << i);
-		usleep(1000 * 500);
-	}
-    // // Variables
+    printf("Hello World\n");
+
+    for (int i = 0; i < 8; i++)
+    {
+        led_controller.set_led_bits(1 << i);
+        usleep(1000 * 500);
+    }
+    // Variables
     // reint reg_a;
     // reint reg_b;
     // uint64_t sum = 0;
@@ -48,7 +53,7 @@ int main(int argc, char **argv)
     // }
 
     // FPGA_Slaves_Base = (uint8_t *)mmap(NULL, HPS_TO_FPGA_HW_ADDER_SPAN, PROT_READ | PROT_WRITE, MAP_SHARED, fd,
-    //                              HPS_TO_FPGA_HW_ADDER_BASE);
+    //                                    HPS_TO_FPGA_HW_ADDER_BASE);
     // if (FPGA_Slaves_Base == MAP_FAILED)
     // {
     //     printf("Couldn't map bridge\n");
@@ -80,5 +85,5 @@ int main(int argc, char **argv)
     // }
 
     // close(fd);
-    return 0;
+    // return 0;
 }
