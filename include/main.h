@@ -11,6 +11,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <exception>
+#include <optional>
 
 // C Header File
 #include <error.h>
@@ -22,9 +23,9 @@
 
 // HPS-FPGA Specific Header Files
 #include <hwlib.h>
-#include <socal/socal.h>
-#include <socal/hps.h>
 #include <socal/alt_gpio.h>
+#include <socal/hps.h>
+#include <socal/socal.h>
 
 #include "hps_0.h"
 #include "soc_system.h"
@@ -33,10 +34,29 @@
 #include "io_addr_macros.h"
 #include "io_rw_macros.h"
 
+// Enumerations for Memory Regions
+enum MEM_REGIONS
+{
+    FPGA_SLAVES_MEM_REGION,
+    PERIPH_MEM_REGION,
+    LW_FPGA_SLAVES_MEM_REGION
+};
+
+// Enumerations for memory_manager errors
+enum MEMORY_MANAGER_ERRORS
+{
+    MEM_REGION_NOT_VALID
+};
+
 // Common Address Space Regions
 #define FPGASLAVES 0xC0000000
 #define PERIPH 0xFC000000
 #define LWFPGASLAVES 0xFF200000
+
+// Common Address Space Spans
+#define FPGASLAVES_SPAN 0x3C000000
+#define PERIPH_SPAN 0x04000000
+#define LWFPGASLAVES_SPAN 0x00200000
 
 class memory_manager
 {
@@ -50,9 +70,9 @@ class memory_manager
     memory_manager();
     ~memory_manager();
 
-    uint8_t *get_fpga_slaves_base();
-    uint8_t *get_periph_base();
-    uint8_t *get_lw_fpga_slaves_base();
+    std::optional<uint8_t> write_to_register(MEM_REGIONS memory_region, uint64_t offset, uint64_t value);
+    std::optional<uint64_t> read_from_register(MEM_REGIONS memory_region, uint64_t offset);
+    std::optional<uint8_t> clear_register(MEM_REGIONS memory_region, uint64_t offset);
 };
 
 class led_control
@@ -61,7 +81,7 @@ class led_control
     std::shared_ptr<memory_manager> memory_manager_instance;
 
   public:
-    led_control();
+    led_control(std::shared_ptr<memory_manager> memory_manager_instance);
     ~led_control();
 
     void clear_led_bits();

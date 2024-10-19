@@ -16,7 +16,8 @@
 				"soc_cv_av"
 			],
 			"compilerPath": "/home/bl4z3/intelFPGA/20.1/embedded/host_tools/linaro/gcc/bin/arm-none-linux-gnueabihf-g++",
-			"intelliSenseMode": "linux-gcc-arm"
+			"intelliSenseMode": "linux-gcc-arm",
+			"cppStandard": "c++17"
 		}
 	],
 	"version": 4
