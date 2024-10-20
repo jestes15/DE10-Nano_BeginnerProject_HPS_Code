@@ -88,4 +88,18 @@ class led_control
     void set_led_bits(uint8_t mask);
 };
 
+class lfsr_controller
+{
+  private:
+    std::shared_ptr<memory_manager> memory_manager_instance;
+	uint64_t lsfr_control_register;
+
+  public:
+    lfsr_controller(std::shared_ptr<memory_manager> memory_manager_instance);
+    ~lfsr_controller();
+
+    uint32_t get_random_number();
+	void reset();
+};
+
 #endif /* F3D76B28_62F0_421B_95AA_C26A50499045 */
