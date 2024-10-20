@@ -36,6 +36,86 @@ memory_manager::~memory_manager()
     close(file_descriptor);
 }
 
+std::optional<uint8_t> memory_manager::or_register(MEM_REGIONS memory_region, uint64_t offset, uint64_t value)
+{
+	switch (memory_region)
+	{
+	case FPGA_SLAVES_MEM_REGION:
+		IOWR_64DIRECT(this->fpga_slaves_base.get(), offset, IORD_64DIRECT(this->fpga_slaves_base.get(), offset) | value);
+		break;
+	case PERIPH_MEM_REGION:
+		IOWR_64DIRECT(this->periph_base.get(), offset, IORD_64DIRECT(this->periph_base.get(), offset) | value);
+		break;
+	case LW_FPGA_SLAVES_MEM_REGION:
+		IOWR_64DIRECT(this->lw_fpga_slaves_base.get(), offset, IORD_64DIRECT(this->lw_fpga_slaves_base.get(), offset) | value);
+		break;
+	default:
+		return MEM_REGION_NOT_VALID;
+	}
+
+	return {};
+}
+
+std::optional<uint8_t> memory_manager::and_register(MEM_REGIONS memory_region, uint64_t offset, uint64_t value)
+{
+	switch (memory_region)
+	{
+	case FPGA_SLAVES_MEM_REGION:
+		IOWR_64DIRECT(this->fpga_slaves_base.get(), offset, IORD_64DIRECT(this->fpga_slaves_base.get(), offset) & value);
+		break;
+	case PERIPH_MEM_REGION:
+		IOWR_64DIRECT(this->periph_base.get(), offset, IORD_64DIRECT(this->periph_base.get(), offset) & value);
+		break;
+	case LW_FPGA_SLAVES_MEM_REGION:
+		IOWR_64DIRECT(this->lw_fpga_slaves_base.get(), offset, IORD_64DIRECT(this->lw_fpga_slaves_base.get(), offset) & value);
+		break;
+	default:
+		return MEM_REGION_NOT_VALID;
+	}
+
+	return {};
+}
+
+std::optional<uint8_t> memory_manager::xor_register(MEM_REGIONS memory_region, uint64_t offset, uint64_t value)
+{
+	switch (memory_region)
+	{
+	case FPGA_SLAVES_MEM_REGION:
+		IOWR_64DIRECT(this->fpga_slaves_base.get(), offset, IORD_64DIRECT(this->fpga_slaves_base.get(), offset) ^ value);
+		break;
+	case PERIPH_MEM_REGION:
+		IOWR_64DIRECT(this->periph_base.get(), offset, IORD_64DIRECT(this->periph_base.get(), offset) ^ value);
+		break;
+	case LW_FPGA_SLAVES_MEM_REGION:
+		IOWR_64DIRECT(this->lw_fpga_slaves_base.get(), offset, IORD_64DIRECT(this->lw_fpga_slaves_base.get(), offset) ^ value);
+		break;
+	default:
+		return MEM_REGION_NOT_VALID;
+	}
+
+	return {};
+}
+
+std::optional<uint8_t> memory_manager::not_register(MEM_REGIONS memory_region, uint64_t offset)
+{
+	switch (memory_region)
+	{
+	case FPGA_SLAVES_MEM_REGION:
+		IOWR_64DIRECT(this->fpga_slaves_base.get(), offset, ~IORD_64DIRECT(this->fpga_slaves_base.get(), offset));
+		break;
+	case PERIPH_MEM_REGION:
+		IOWR_64DIRECT(this->periph_base.get(), offset, ~IORD_64DIRECT(this->periph_base.get(), offset));
+		break;
+	case LW_FPGA_SLAVES_MEM_REGION:
+		IOWR_64DIRECT(this->lw_fpga_slaves_base.get(), offset, ~IORD_64DIRECT(this->lw_fpga_slaves_base.get(), offset));
+		break;
+	default:
+		return MEM_REGION_NOT_VALID;
+	}
+
+	return {};
+}
+
 std::optional<uint8_t> memory_manager::write_to_register(MEM_REGIONS memory_region, uint64_t offset, uint64_t value)
 {
     switch (memory_region)

@@ -21,6 +21,9 @@ lfsr_controller::~lfsr_controller()
 
 uint32_t lfsr_controller::get_random_number()
 {
+    uint64_t register_state =
+        this->memory_manager_instance->read_from_register(FPGA_SLAVES_MEM_REGION, CTRL_REGISTER_BASE).value();
+	
     this->memory_manager_instance->write_to_register(FPGA_SLAVES_MEM_REGION, CTRL_REGISTER_BASE, 0x3);
     this->memory_manager_instance->write_to_register(FPGA_SLAVES_MEM_REGION, CTRL_REGISTER_BASE, 0x2);
     return this->memory_manager_instance->read_from_register(FPGA_SLAVES_MEM_REGION, RANDOM_BASE).value();

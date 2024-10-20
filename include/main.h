@@ -70,6 +70,11 @@ class memory_manager
     memory_manager();
     ~memory_manager();
 
+	std::optional<uint8_t> or_register(MEM_REGIONS memory_region, uint64_t offset, uint64_t value);
+	std::optional<uint8_t> and_register(MEM_REGIONS memory_region, uint64_t offset, uint64_t value);
+	std::optional<uint8_t> xor_register(MEM_REGIONS memory_region, uint64_t offset, uint64_t value);
+	std::optional<uint8_t> not_register(MEM_REGIONS memory_region, uint64_t offset);
+	
     std::optional<uint8_t> write_to_register(MEM_REGIONS memory_region, uint64_t offset, uint64_t value);
     std::optional<uint64_t> read_from_register(MEM_REGIONS memory_region, uint64_t offset);
     std::optional<uint8_t> clear_register(MEM_REGIONS memory_region, uint64_t offset);
