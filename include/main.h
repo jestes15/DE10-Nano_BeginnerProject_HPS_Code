@@ -74,6 +74,13 @@ class memory_manager
 	std::optional<uint8_t> and_register(MEM_REGIONS memory_region, uint64_t offset, uint64_t value);
 	std::optional<uint8_t> xor_register(MEM_REGIONS memory_region, uint64_t offset, uint64_t value);
 	std::optional<uint8_t> not_register(MEM_REGIONS memory_region, uint64_t offset);
+
+	// Bitwise Instructions
+	std::optional<uint8_t> bic_register(MEM_REGIONS memory_region, uint64_t offset, uint64_t value);
+	std::optional<uint8_t> bis_register(MEM_REGIONS memory_region, uint64_t offset, uint64_t value);
+
+	std::optional<uint8_t> ror_register();
+	std::optional<uint8_t> rol_register();
 	
     std::optional<uint8_t> write_to_register(MEM_REGIONS memory_region, uint64_t offset, uint64_t value);
     std::optional<uint64_t> read_from_register(MEM_REGIONS memory_region, uint64_t offset);
