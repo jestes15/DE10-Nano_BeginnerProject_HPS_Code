@@ -11,7 +11,8 @@ lfsr_controller::lfsr_controller(std::shared_ptr<memory_manager> memory_manager_
     this->memory_manager_instance->write_to_register(FPGA_SLAVES_MEM_REGION, CTRL_REGISTER_BASE, 0x2);
 
     printf("LFSR Controller Initialized\n");
-    printf("LSFR Initial Value: 0x%8llx\n",
+    printf("LSFR Initial Value: 0x%8llx :: %llu\n",
+           this->memory_manager_instance->read_from_register(FPGA_SLAVES_MEM_REGION, RANDOM_BASE).value(),
            this->memory_manager_instance->read_from_register(FPGA_SLAVES_MEM_REGION, RANDOM_BASE).value());
 }
 

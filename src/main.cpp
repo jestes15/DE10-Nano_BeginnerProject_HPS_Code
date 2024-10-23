@@ -19,8 +19,8 @@ int main(int argc, char **argv)
 
     for (int i = 0; i < 8; i++)
     {
-        led_controller.set_led_bits(1 << i);
-        printf("Random Number: 0x%8x\n", lfsr_controller.get_random_number());
-        usleep(1000 * 500);
+        auto temp = lfsr_controller.get_random_number();
+        printf("Random Number: 0x%08x :: %u\n", temp, temp);
+        printf("Random Number: 0x%08x :: %u\n", temp % 1940, temp % 1940);
     }
 }
