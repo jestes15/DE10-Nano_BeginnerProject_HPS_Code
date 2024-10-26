@@ -5,7 +5,6 @@ lfsr_controller::lfsr_controller(std::shared_ptr<memory_manager> memory_manager_
     this->memory_manager_instance = memory_manager_instance;
 
     // Reset the LFSR
-
     this->memory_manager_instance->write_to_register(FPGA_SLAVES_MEM_REGION, CTRL_REGISTER_BASE, 0x2);
     this->memory_manager_instance->write_to_register(FPGA_SLAVES_MEM_REGION, CTRL_REGISTER_BASE, 0x0);
     this->memory_manager_instance->write_to_register(FPGA_SLAVES_MEM_REGION, CTRL_REGISTER_BASE, 0x2);
