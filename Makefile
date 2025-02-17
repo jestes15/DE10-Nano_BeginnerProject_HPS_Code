@@ -6,7 +6,7 @@ CTRL_OBJ_DIR = ctrl_obj
 CTRL_EXEC = executables
 
 ALT_DEVICE_FAMILY ?= soc_cv_av
-SOCEDS_DEST_ROOT ?= /home/bl4z3/Intel_SoC_FPGFA_DevTools/SoCEDS/20.1
+SOCEDS_DEST_ROOT ?= ${HOME}/Intel_SoC_FPGFA_DevTools/SoCEDS/20.1
 
 COMPILER_PATH ?= $(SOCEDS_DEST_ROOT)/embedded/host_tools/arm_toolchains/aarch32/bin
 NIOS2_EDS_COMP ?= $(SOCEDS_DEST_ROOT)/nios2eds/components
