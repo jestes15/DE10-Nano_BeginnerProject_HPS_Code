@@ -6,7 +6,7 @@ CTRL_OBJ_DIR = ctrl_obj
 CTRL_EXEC = executables
 
 ALT_DEVICE_FAMILY ?= soc_cv_av
-SOCEDS_DEST_ROOT ?= ${HOME}/Intel_SoC_FPGFA_DevTools/SoCEDS/20.1
+SOCEDS_DEST_ROOT ?= ${HOME}/intelFPGA/20.1
 
 COMPILER_PATH ?= $(SOCEDS_DEST_ROOT)/embedded/host_tools/arm_toolchains/aarch32/bin
 NIOS2_EDS_COMP ?= $(SOCEDS_DEST_ROOT)/nios2eds/components
@@ -142,14 +142,17 @@ build: $(OBJ_FILES) $(TEST_OBJ_FILES) $(TEST_EXE_FILES)
 
 # Rule to build object files from src
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(@D)
 	$(CXX) $(CXX_FLAGS) -c -o $@ $<
 
 # Rule to build object files from tests (CTRL_DIR)
 $(CTRL_OBJ_DIR)/%.o: $(CTRL_DIR)/%.cpp $(OBJ_FILES)
+	@mkdir -p $(@D)
 	$(CXX) $(CXX_FLAGS) -c -o $@ $<
 
 # Rule to link test executables, linking with all object files from src
 $(CTRL_EXEC)/%: $(CTRL_OBJ_DIR)/%.o $(OBJ_FILES)
+	@mkdir -p $(@D)
 	$(CXX) $(LD_FLAGS) $^ -o $@
 
 .PHONY: clean
