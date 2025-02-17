@@ -41,11 +41,11 @@ echo "Installing SoC EDS and Quartus"
 ./setup.sh --installdir $HOME/intelFPGA/18.1 --accept_eula 1 --mode unattended
 
 echo "Installing Arm GNU Toolchain"
-mkdir -p $HOME/intelFPGA/20.1/embedded/host_tools/arm_toolchains/Aarch32 $HOME/intelFPGA/20.1/embedded/host_tools/arm_toolchains/Aarch64
+mkdir -p $HOME/intelFPGA/20.1/embedded/host_tools/arm_toolchains/aarch32 $HOME/intelFPGA/20.1/embedded/host_tools/arm_toolchains/aarch64
 tar xf arm-gnu-toolchain-14.2.rel1-x86_64-aarch64-none-linux-gnu.tar.xz
 tar xf arm-gnu-toolchain-14.2.rel1-x86_64-arm-none-linux-gnueabihf.tar.xz
-cp -r arm-gnu-toolchain-14.2.rel1-x86_64-aarch64-none-linux-gnu/* $HOME/intelFPGA/20.1/embedded/host_tools/arm_toolchains/Aarch64/
-cp -r arm-gnu-toolchain-14.2.rel1-x86_64-arm-none-linux-gnueabihf/* $HOME/intelFPGA/20.1/embedded/host_tools/arm_toolchains/Aarch32/
+cp -r arm-gnu-toolchain-14.2.rel1-x86_64-aarch64-none-linux-gnu/* $HOME/intelFPGA/20.1/embedded/host_tools/arm_toolchains/aarch64/
+cp -r arm-gnu-toolchain-14.2.rel1-x86_64-arm-none-linux-gnueabihf/* $HOME/intelFPGA/20.1/embedded/host_tools/arm_toolchains/aarch32/
 
 rm arm-gnu-toolchain-14.2.rel1-x86_64-aarch64-none-linux-gnu.tar.xz arm-gnu-toolchain-14.2.rel1-x86_64-arm-none-linux-gnueabihf.tar.xz
 rm -rf arm-gnu-toolchain-14.2.rel1-x86_64-aarch64-none-linux-gnu arm-gnu-toolchain-14.2.rel1-x86_64-arm-none-linux-gnueabihf
@@ -64,11 +64,11 @@ export DEWD=$HOME/de10nano_wd
 mkdir -p $DEWD
 
 echo "# Cross compiler for DE10-Nano." >> ~/.bash_aliases
-echo "export CROSS_COMPILE_AARCH32=$HOME/intelFPGA/20.1/embedded/host_tools/arm_toolchains/Aarch32/bin/arm-none-linux-gnueabihf-"  >> ~/.bash_aliases
-echo "export CROSS_COMPILE_AARCH64=$HOME/intelFPGA/20.1/embedded/host_tools/arm_toolchains/Aarch64/bin/aarch64-none-linux-gnu-"  >> ~/.bash_aliases
+echo "export CROSS_COMPILE_AARCH32=$HOME/intelFPGA/20.1/embedded/host_tools/arm_toolchains/aarch32/bin/arm-none-linux-gnueabihf-"  >> ~/.bash_aliases
+echo "export CROSS_COMPILE_AARCH64=$HOME/intelFPGA/20.1/embedded/host_tools/arm_toolchains/aarch64/bin/aarch64-none-linux-gnu-"  >> ~/.bash_aliases
 
-export CROSS_COMPILE_AARCH32=$HOME/intelFPGA/20.1/embedded/host_tools/arm_toolchains/Aarch32/bin/arm-none-linux-gnueabihf-
-export CROSS_COMPILE_AARCH64=$HOME/intelFPGA/20.1/embedded/host_tools/arm_toolchains/Aarch64/bin/aarch64-none-linux-gnu-
+export CROSS_COMPILE_AARCH32=$HOME/intelFPGA/20.1/embedded/host_tools/arm_toolchains/aarch32/bin/arm-none-linux-gnueabihf-
+export CROSS_COMPILE_AARCH64=$HOME/intelFPGA/20.1/embedded/host_tools/arm_toolchains/aarch64/bin/aarch64-none-linux-gnu-
 
 rm SoCEDSSetup-20.1.0.711-linux.run
 rm QuartusLiteSetup-20.1.0.711-linux.run
