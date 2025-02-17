@@ -106,12 +106,14 @@ class lfsr_controller
   private:
     std::shared_ptr<memory_manager> memory_manager_instance;
     uint64_t lsfr_control_register;
+    uint64_t lfsr_reset_register;
     MEM_REGIONS peripheral_memory_region;
 
   public:
-    lfsr_controller(std::shared_ptr<memory_manager> memory_manager_instance, MEM_REGIONS peripheral_memory_region);
+    lfsr_controller(std::shared_ptr<memory_manager> memory_manager_instance, MEM_REGIONS peripheral_memory_region, uint32_t seed = 0x3F60FF91);
     ~lfsr_controller();
 
+    void set_seed(uint32_t seed);
     uint32_t get_random_number();
     void reset();
 };

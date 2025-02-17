@@ -8,7 +8,7 @@ union reint {
 int main(int argc, char **argv)
 {
     std::shared_ptr<memory_manager> memory_manager_instance = std::make_shared<memory_manager>();
-    lfsr_controller lfsr_controller(memory_manager_instance, FPGA_SLAVES_MEM_REGION);
+    lfsr_controller lfsr_controller(memory_manager_instance, FPGA_SLAVES_MEM_REGION, 0x12345678);
 
     for (int i = 0; i < 32; i++)
     {

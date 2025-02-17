@@ -103,15 +103,39 @@
 #define CTRL_REGISTER_RESET_VALUE 0
 
 /*
+ * Macros for device 'lfsr_reset_value_reg', class 'altera_avalon_pio'
+ * The macros are prefixed with 'LFSR_RESET_VALUE_REG_'.
+ * The prefix is the slave descriptor.
+ */
+#define LFSR_RESET_VALUE_REG_COMPONENT_TYPE altera_avalon_pio
+#define LFSR_RESET_VALUE_REG_COMPONENT_NAME ctrl_register
+#define LFSR_RESET_VALUE_REG_BASE 0x40
+#define LFSR_RESET_VALUE_REG_SPAN 16
+#define LFSR_RESET_VALUE_REG_END 0x4f
+#define LFSR_RESET_VALUE_REG_BIT_CLEARING_EDGE_REGISTER 0
+#define LFSR_RESET_VALUE_REG_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define LFSR_RESET_VALUE_REG_CAPTURE 0
+#define LFSR_RESET_VALUE_REG_DATA_WIDTH 32
+#define LFSR_RESET_VALUE_REG_DO_TEST_BENCH_WIRING 0
+#define LFSR_RESET_VALUE_REG_DRIVEN_SIM_VALUE 0
+#define LFSR_RESET_VALUE_REG_EDGE_TYPE NONE
+#define LFSR_RESET_VALUE_REG_FREQ 50000000
+#define LFSR_RESET_VALUE_REG_HAS_IN 0
+#define LFSR_RESET_VALUE_REG_HAS_OUT 1
+#define LFSR_RESET_VALUE_REG_HAS_TRI 0
+#define LFSR_RESET_VALUE_REG_IRQ_TYPE NONE
+#define LFSR_RESET_VALUE_REG_RESET_VALUE 0x3f60ff91
+
+/*
  * Macros for device 'uart_0', class 'altera_avalon_uart'
  * The macros are prefixed with 'UART_0_'.
  * The prefix is the slave descriptor.
  */
 #define UART_0_COMPONENT_TYPE altera_avalon_uart
 #define UART_0_COMPONENT_NAME uart_0
-#define UART_0_BASE 0x40
+#define UART_0_BASE 0x50
 #define UART_0_SPAN 32
-#define UART_0_END 0x5f
+#define UART_0_END 0x6f
 #define UART_0_IRQ 4
 #define UART_0_BAUD 115200
 #define UART_0_DATA_BITS 8
