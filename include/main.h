@@ -10,6 +10,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <string>
 #include <exception>
 #include <optional>
 
@@ -110,7 +111,7 @@ class lfsr_controller
     MEM_REGIONS peripheral_memory_region;
 
   public:
-    lfsr_controller(std::shared_ptr<memory_manager> memory_manager_instance, MEM_REGIONS peripheral_memory_region, uint32_t seed = 0x3F60FF91);
+    lfsr_controller(std::shared_ptr<memory_manager> memory_manager_instance, MEM_REGIONS peripheral_memory_region);
     ~lfsr_controller();
 
     void set_seed(uint32_t seed);

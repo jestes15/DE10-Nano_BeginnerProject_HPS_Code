@@ -91,7 +91,9 @@
 		"thread": "cpp",
 		"typeinfo": "cpp",
 		"format": "cpp",
-		"semaphore": "cpp"
+		"semaphore": "cpp",
+		"iostream": "cpp",
+		"text_encoding": "cpp"
 	},
 	"files.autoSave": "afterDelay"
 }
