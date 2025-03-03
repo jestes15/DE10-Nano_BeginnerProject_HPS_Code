@@ -1,7 +1,26 @@
 {
 	"configurations": [
 		{
-			"name": "Linux",
+			"name": "Linux_Home",
+			"includePath": [
+				"${workspaceFolder}/**",
+				"/home/bl4z3/intelFPGA/20.1/embedded/host_tools/arm_toolchains/aarch32/arm-none-linux-gnueabihf/include/c++/14.2.1",
+				"/home/bl4z3/intelFPGA/20.1/embedded/host_tools/arm_toolchains/aarch32/arm-none-linux-gnueabihf/libc/usr/include",
+				"/home/bl4z3/intelFPGA/20.1/embedded/ip/altera/hps/altera_hps/hwlib/include",
+				"/home/bl4z3/intelFPGA/20.1/embedded/ip/altera/hps/altera_hps/hwlib/include/soc_cv_av"
+			],
+			"defines": [
+				"_DEBUG",
+				"UNICODE",
+				"_UNICODE",
+				"soc_cv_av"
+			],
+			"compilerPath": "/home/bl4z3/intelFPGA/20.1/embedded/host_tools/arm_toolchains/aarch32/bin/arm-none-linux-gnueabihf-g++",
+			"intelliSenseMode": "linux-gcc-arm",
+			"cppStandard": "c++17"
+		},
+		{
+			"name": "Linux_Work",
 			"includePath": [
 				"${workspaceFolder}/**",
 				"/home/bl4z3/intelFPGA/20.1/embedded/host_tools/arm_toolchains/aarch32/arm-none-linux-gnueabihf/include/c++/14.2.1",
