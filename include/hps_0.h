@@ -13,7 +13,7 @@
  * connected to the following masters:
  *   h2f_axi_master
  *   h2f_lw_axi_master
- * 
+ *
  * Do not include this header file and another header file created for a
  * different module or master group at the same time.
  * Doing so may result in duplicate macro names.
@@ -273,6 +273,5 @@
 #define ALT_VIP_VFR_HDMI_BASE 0x31000
 #define ALT_VIP_VFR_HDMI_SPAN 128
 #define ALT_VIP_VFR_HDMI_END 0x3107f
-
 
 #endif /* _ALTERA_HPS_0_H_ */

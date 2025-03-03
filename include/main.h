@@ -28,7 +28,6 @@
 #include <socal/socal.h>
 
 #include "hps_0.h"
-#include "soc_system.h"
 
 // Macro Header Files
 #include "io_addr_macros.h"
