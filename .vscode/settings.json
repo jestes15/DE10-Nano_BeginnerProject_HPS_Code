@@ -89,6 +89,11 @@
 		"stop_token": "cpp",
 		"streambuf": "cpp",
 		"thread": "cpp",
-		"typeinfo": "cpp"
-	}
+		"typeinfo": "cpp",
+		"format": "cpp",
+		"semaphore": "cpp",
+		"iostream": "cpp",
+		"text_encoding": "cpp"
+	},
+	"files.autoSave": "afterDelay"
 }
